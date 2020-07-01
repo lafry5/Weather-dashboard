@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!--the above is the bootstrap link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- link above is the font awesome link-->
+    <title>Weather Dashboard</title>
+</head>
+<body>
+
+    <header class="container-fluid text-center text-white bg-dark p-2">
+        <h1>Weather Dashboard</h1>
+    </header>
+
+    <div class="container"> <!-- set up container, then row, then divide the columns-->
+        <div class="row">
+            <!--left side below-->
+            <aside class="column-lg-3 bg-light"> <!--where we are going to divide the column-->
+                <h5 class="mt-1">Search for a City</h5>
+                 <div class="form-inline form-group">
+                    <input class="form-control"/> <!--input can self close-->
+                    <button class="btn btn-info"><i class="fa fa-search"></i></button>
+                 </div>
+            <ul class="list-group">
+                <!--as we create list elements we put them in this part of the screen-->
+            </ul>
+            </aside>
+            <!--right side below-->
+            <div class="col-lg-9 bg-light">
+                <div id="today" class="mt-3">
+
+                </div>
+                <div id="forecast" class="mt-3">
+                    <!--we have to do 5 columns-->
+                    <!--do an API call, take the info-->
+                    <!-- grab element by id and specify element by today-->
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+   
+    <!-- 1. Create a header with the title of Header Dashboard from Run Buddy
+         2.  Copy the bootstap link above (to set grid) - done
+             a. state that you are in a container
+             b. left side has multiple rows; right is different (col-3 for 1/4 of the column; col-9 for rhs)-->
+        
+
+
+</body>
+</html>
