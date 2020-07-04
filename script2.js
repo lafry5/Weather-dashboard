@@ -1,30 +1,86 @@
-var btn = document.querySelector('.btn-info')
-var inputValue = document.querySelector('inputValue')
-var name = document.querySelector('.name') //should this be getElementByClassName?
-var desc = document.querySelector('.desc') //should this be getElementByClassName?
-var temp = document.querySelector('.temp') //should this be getElementByClassName?
+var btn = document.querySelector('#search-button')
+var searchV = document.querySelector('#search-value')
+var name = document.querySelector('#name') 
+var wind = document.querySelector('#wind') 
+var humidity = document.querySelector('#humidity')
+var temp = document.querySelector('#temp') 
+var uv = document.querySelector('#uv')
+var desc = document.querySelector('#desc')
+var day = document.querySelector('#day')
+var city = ''; 
+
+day = moment().format('L');
+
+var cities = [];
+
+
+// var loadCities = function() {
+//  cities = JSON.parse(localStorage.getItem("cities"));
+//}
+
+//var saveCities = function() { //stores to local storage (setItem, getItem)
+//    console.log('executed save cities')
+//    localStorage.setItem("cities", JSON.stringify(cities));
+//};
 
 
 
-/* btn.addEventListener('click', function() { */
+btn.addEventListener('click', function() { 
+    console.log(searchV.value)
+    searchcities(searchV.value)
+}) //end of addEventListener button */
 
-    function searchcities(city){
-        let queryurl = 'https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=256323dc867f295cf0452b3157e363b5'
-        $.ajax({
-            url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=256323dc867f295cf0452b3157e363b5`,
-            method: "GET",
-            }).then(function (response){
-            let cityName = response.cityName
-            let temp = response.name.temp
-            
-            let humidity = response.name.humidity
-            let windspeed = response.wind.speed
-            console.log(response);
-        })
-        
-    } //end of searchcities function
+function searchcities(city){
+       let queryurl = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=8b58730b831d9dfe90f82c5fd73e1a99"
+       var CityInfo = [];
+       var name = document.getElementById('name') //temp test
+       var humidity = document.getElementById('humidity')
+       var temp = document.getElementById('temp')
+       var wind = document.getElementById('wind')
+       var uv = document.getElementById('uv')
+       var day = document.getElementById('day') 
+       var desc = document.querySelector('#desc')
+       fetch(queryurl).then(function(response){
+       return response.json()
+       }).then(function(response){
+       console.log(response) 
+       
+       //Get current city, date and description
+       name.innerHTML = response.name 
+       console.log(response.name)
+       day.innerHTML = moment().format('L');
+       desc.innerHTML = response.weather.main
+       console.log(response.weather.main)
 
-/* }) //end of addEventListener button */
+       //Get current temperature
+       temp.innerHTML = "Temperature is " + response.main.temp + "C" // Need to convert to F
+       console.log(response.main.temp)
+     
+       //Humidity
+       humidity.innerHTML = "Humidity is " + response.main.humidity + "%"
+       console.log(response.main.humidity)
+      
 
-searchcities('Seattle')
+       //Wind 
+       wind.innerHTML = "Wind speed is " + response.wind.speed + "MPH"
+       console.log(response.wind.speed)
+     
 
+       //UV Need UV lookup
+       uv.innerHTML = "UV index is " + response.wind.speed 
+       console.log(response.wind.speed)
+    
+
+
+
+
+             
+       
+
+
+       })
+} //end of searchcities function
+
+
+
+searchcities()

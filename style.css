@@ -1,0 +1,37 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#today,{
+    background-color: lightgray;
+    border: solid, black;
+    border-top: solid, black;
+    border-bottom: solid, black;
+    border-left: solid, black;
+    border-right: solid, black;
+    padding: 10px;
+    margin: 10px;
+    font-family: sans-serif
+ }
+
+#name {
+    display: inline;
+
+}
+
+#day {
+    display: inline-block; 
+}
+
+#desc {
+    display: inline-block; 
+    justify-content: space-around;
+
+}
+
+ul.list-group {
+    min-height: 130px;
+  }
