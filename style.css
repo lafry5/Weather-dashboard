@@ -35,3 +35,16 @@
 ul.list-group {
     min-height: 130px;
   }
+
+.card {
+    background-color: mediumblue;
+    border: solid, black;
+    border-top: solid, black;
+    border-bottom: solid, black;
+    border-left: solid, black;
+    border-right: solid, black;
+    font-style: white;
+    text-decoration-color: white;
+    color: white;
+
+}
