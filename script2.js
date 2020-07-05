@@ -11,7 +11,17 @@ var city = '';
 
 day = moment().format('L');
 
-var cities = [];
+var cities = {};
+
+var loadCities = function () {
+    cities = JSON.parse(loccalStorage.getItem("cities"));
+
+    //if nothing in local Storage, create a new object to track all cities arrays
+
+if (!cities)  {
+    cities = [];
+};
+}
 
 
 // var loadCities = function() {
@@ -47,10 +57,11 @@ function searchcities(city){
        
        //Get current city, date and description
        name.innerHTML = response.name 
+       // need to add name to the cities list 
        console.log(response.name)
        day.innerHTML = moment().format('L');
-       desc.innerHTML = response.weather.main
-       console.log(response.weather.main)
+       // desc.innerHTML = response.weather.main
+       //console.log(response.weather.main)
 
        //Get current temperature
        temp.innerHTML = "Temperature is " + response.main.temp + "C" // Need to convert to F
@@ -65,22 +76,35 @@ function searchcities(city){
        wind.innerHTML = "Wind speed is " + response.wind.speed + "MPH"
        console.log(response.wind.speed)
      
-
-       //UV Need UV lookup
-       uv.innerHTML = "UV index is " + response.wind.speed 
-       console.log(response.wind.speed)
-    
-
-
-
-
-             
-       
-
-
+       return fetch (
+        'https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&appid=8b58730b831d9dfe90f82c5fd73e1a99'
+       )
+        console.log('in the return fetch')   
+    }
+       .then(function(response) {
+           console.log('in the return fetch then response')
+           return response.json();
+           uv.innerHTML = "UV index is " + response.daily.uvi
        })
+       .then(function(response) {
+        uv.innerHTML = "UV index is " + response.daily.uvi
+       )   
+       }
+
+
+       //UV variable
+       //uvfunct(response.coord.lat, response.coord.lon)
+      // uv.innerHTML = "UV index is " + response.daily.uvi
 } //end of searchcities function
 
-
-
-searchcities()
+// UV function
+//var uvfunct = function(lat,lon) {
+//    var apiUrl = "https://api.openweathermap.org/data/2.5/uvi?lat="+lat+"&lon="+lon+""
+//   fetch(apiUrl)
+//    .then(function(response){
+//        return response.json();
+//    }).then(function(response) {
+//        console.log(response.value)
+    //uv.innerHTML = "UV index is " + response[0].value;
+//    })
+//}

@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-#today,{
+#today {
     background-color: lightgray;
     border: solid, black;
     border-top: solid, black;
