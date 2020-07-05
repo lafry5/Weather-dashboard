@@ -106,7 +106,7 @@ function searchcities(city){
        console.log(response.name)
        day.innerHTML = moment().format('L');
        weather = response.weather[0].icon
-       desc.innerHTML = `<img src="./assets/icons/${weather}.png"/>`;
+       desc.src = "http://openweathermap.org/img/w/" + weather + ".png";
      
        // desc.innerHTML = response.weather.main
        //console.log(response.weather.main)
@@ -158,11 +158,11 @@ var uvfunct = function(lat,lon) {
         weather3 = result.daily[3].weather[0].icon
         weather4 = result.daily[4].weather[0].icon
         weather5 = result.daily[5].weather[0].icon
-        desc1.innerHTML = `<img src="./assets/icons/${weather1}.png"/>`;
-        desc2.innerHTML = `<img src="./assets/icons/${weather2}.png"/>`;
-        desc3.innerHTML = `<img src="./assets/icons/${weather3}.png"/>`;
-        desc4.innerHTML = `<img src="./assets/icons/${weather4}.png"/>`;
-        desc5.innerHTML = `<img src="./assets/icons/${weather5}.png"/>`;
+        desc1.src = "http://openweathermap.org/img/w/" + weather1 + ".png";
+        desc2.src = "http://openweathermap.org/img/w/" + weather2 + ".png";
+        desc3.src = "http://openweathermap.org/img/w/" + weather3 + ".png";
+        desc4.src = "http://openweathermap.org/img/w/" + weather4 + ".png";
+        desc5.src = "http://openweathermap.org/img/w/" + weather5 + ".png";     
         temp1.innerHTML = "Temp: " + result.daily[1].temp.max + " F"
         temp2.innerHTML = "Temp: " + result.daily[2].temp.max + " F"
         temp3.innerHTML = "Temp: " + result.daily[3].temp.max + " F"
