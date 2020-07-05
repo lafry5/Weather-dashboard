@@ -64,7 +64,7 @@ function searchcities(city){
        //console.log(response.weather.main)
 
        //Get current temperature
-       temp.innerHTML = "Temperature is " + response.main.temp + "C" // Need to convert to F
+       temp.innerHTML = "Temperature is " + response.main.temp + " C" // Need to convert to F
        console.log(response.main.temp)
      
        //Humidity
@@ -73,38 +73,66 @@ function searchcities(city){
       
 
        //Wind 
-       wind.innerHTML = "Wind speed is " + response.wind.speed + "MPH"
+       wind.innerHTML = "Wind speed is " + response.wind.speed + " MPH"
        console.log(response.wind.speed)
      
-       return fetch (
-        'https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&appid=8b58730b831d9dfe90f82c5fd73e1a99'
-       )
-        console.log('in the return fetch')   
-    }
-       .then(function(response) {
-           console.log('in the return fetch then response')
-           return response.json();
-           uv.innerHTML = "UV index is " + response.daily.uvi
-       })
-       .then(function(response) {
-        uv.innerHTML = "UV index is " + response.daily.uvi
-       )   
-       }
+    // Nested API fetch. This was replaced with the separate, UV, function
+
+    // return fetch (
+    //  'https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&appid=8b58730b831d9dfe90f82c5fd73e1a99'
+    //  )
+    //   console.log('in the return fetch')   
+    //}
+    //   .then(function(response) {
+    //       console.log('in the return fetch then response')
+    //       return response.json();
+    //       uv.innerHTML = "UV index is " + response.daily.uvi
+    //   })
+    //   .then(function(response) {
+    //    uv.innerHTML = "UV index is " + response.daily.uvi
+    //   })))   
+     //  }
 
 
-       //UV variable
-       //uvfunct(response.coord.lat, response.coord.lon)
-      // uv.innerHTML = "UV index is " + response.daily.uvi
-} //end of searchcities function
+   // UV variable
+    uvfunct(response.coord.lat, response.coord.lon)
+
+    //weather icon; need icon id
+    iconfunct(icon)
+
+
+//       })
+//    } 
+}) //end of searchcities function
+
 
 // UV function
-//var uvfunct = function(lat,lon) {
-//    var apiUrl = "https://api.openweathermap.org/data/2.5/uvi?lat="+lat+"&lon="+lon+""
-//   fetch(apiUrl)
-//    .then(function(response){
-//        return response.json();
-//    }).then(function(response) {
-//        console.log(response.value)
-    //uv.innerHTML = "UV index is " + response[0].value;
-//    })
-//}
+var uvfunct = function(lat,lon) {
+   var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&appid=8b58730b831d9dfe90f82c5fd73e1a99"
+   fetch(apiUrl).then(function(result) {
+        console.log(result)
+        console.log('here')
+        return result.json();
+    }).then(function(result) {
+        console.log(result.current.uvi)
+        uv.innerHTML = "UV index is " + result.current.uvi;
+    })
+    }
+}
+
+
+// Weather icon function
+var iconfunct = function(icon) {
+   var apiUrl = "http://openweathermap.org/img/w/"+icon+".png";
+    fetch(apiUrl).then(function(ending) {
+         console.log(ending)
+         console.log('finally')
+         return result.json();
+     }).then(function(ending) {
+         //weather icon
+         console.log(ending.weather.icon)
+         $(".icon").html("<img src=' + .icon + '>")
+         desc.innerHTML = ending.weather.icon;
+     })
+     }
+// } //this seems to be needed based on uvfunction ?!
