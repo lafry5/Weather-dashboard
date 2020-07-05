@@ -64,7 +64,8 @@ btn.addEventListener('click', function() {
 
 
 function searchcities(city){
-       let queryurl = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=8b58730b831d9dfe90f82c5fd73e1a99"
+       
+       let queryurl = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=8b58730b831d9dfe90f82c5fd73e1a99&units=imperial"
        var CityInfo = [];
        day = moment().format('L');
        var name = document.getElementById('name') //temp test
@@ -74,6 +75,11 @@ function searchcities(city){
        var uv = document.getElementById('uv')
        var day = document.getElementById('day') 
        var desc = document.querySelector('#desc')
+       var desc1 = document.querySelector('#desc1')
+       var desc2 = document.querySelector('#desc2')
+       var desc3 = document.querySelector('#desc3')
+       var desc4 = document.querySelector('#desc4')
+       var desc5 = document.querySelector('#desc5')
        var day1 = document.getElementById('day1')
        var humidity1 = document.getElementById('humidity1')
        var temp1 = document.getElementById('temp1')
@@ -99,13 +105,14 @@ function searchcities(city){
        // need to add name to the cities list 
        console.log(response.name)
        day.innerHTML = moment().format('L');
-      
+       weather = response.weather[0].icon
+       desc.innerHTML = `<img src="./assets/icons/${weather}.png"/>`;
      
        // desc.innerHTML = response.weather.main
        //console.log(response.weather.main)
 
        //Get current temperature
-       temp.innerHTML = "Temperature is " + response.main.temp + " C" 
+       temp.innerHTML = "Temperature is " + response.main.temp + " F" 
        console.log(response.main.temp)
        
        //Humidity
@@ -132,7 +139,7 @@ function searchcities(city){
 
 // UV function & forecast
 var uvfunct = function(lat,lon) {
-   var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&appid=8b58730b831d9dfe90f82c5fd73e1a99"
+   var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&appid=8b58730b831d9dfe90f82c5fd73e1a99&units=imperial"
    day = moment().format('L');
    fetch(apiUrl).then(function(result) {
         console.log(result)
@@ -146,21 +153,34 @@ var uvfunct = function(lat,lon) {
         daythree = moment(). add(3,'days').format('L');
         dayfour = moment(). add(4,'days').format('L');
         dayfive = moment(). add(5,'days').format('L');
-        day1.innerHTML = dayone;
-        day2.innerHTML = daytwo;
-        day3.innerHTML = daythree;
-        day4.innerHTML = dayfour;
-        day5.innerHTML = dayfive;
-        temp1.innerHTML = "Temp: " + result.daily[1].temp.day + " C"
-        temp2.innerHTML = "Temp: " + result.daily[2].temp.day + " C"
-        temp3.innerHTML = "Temp: " + result.daily[3].temp.day + " C"
-        temp4.innerHTML = "Temp: " + result.daily[4].temp.day + " C"
-        temp5.innerHTML = "Temp: " + result.daily[5].temp.day + " C"
+        weather1 = result.daily[1].weather[0].icon
+        weather2 = result.daily[2].weather[0].icon
+        weather3 = result.daily[3].weather[0].icon
+        weather4 = result.daily[4].weather[0].icon
+        weather5 = result.daily[5].weather[0].icon
+        desc1.innerHTML = `<img src="./assets/icons/${weather1}.png"/>`;
+        desc2.innerHTML = `<img src="./assets/icons/${weather2}.png"/>`;
+        desc3.innerHTML = `<img src="./assets/icons/${weather3}.png"/>`;
+        desc4.innerHTML = `<img src="./assets/icons/${weather4}.png"/>`;
+        desc5.innerHTML = `<img src="./assets/icons/${weather5}.png"/>`;
+        temp1.innerHTML = "Temp: " + result.daily[1].temp.max + " F"
+        temp2.innerHTML = "Temp: " + result.daily[2].temp.max + " F"
+        temp3.innerHTML = "Temp: " + result.daily[3].temp.max + " F"
+        temp4.innerHTML = "Temp: " + result.daily[4].temp.max + " F"
+        temp5.innerHTML = "Temp: " + result.daily[5].temp.max + " F"
         humidity1.innerHTML = "Humidity: " + result.daily[1].humidity + "%"
         humidity2.innerHTML = "Humidity: " + result.daily[2].humidity + "%"
         humidity3.innerHTML = "Humidity: " + result.daily[3].humidity + "%"
         humidity4.innerHTML = "Humidity: " + result.daily[4].humidity + "%"
         humidity5.innerHTML = "Humidity: " + result.daily[5].humidity + "%"
+        day1.innerHTML = dayone;
+        day2.innerHTML = daytwo;
+        day3.innerHTML = daythree;
+        day4.innerHTML = dayfour;
+        day5.innerHTML = dayfive;
+        
+
+
     })
    }
 //} // runs without it ?!
