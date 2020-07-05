@@ -13,32 +13,52 @@ day = moment().format('L');
 
 var cities = {};
 
-var loadCities = function () {
-    cities = JSON.parse(loccalStorage.getItem("cities"));
+var loadCities = function() {
+    cities = JSON.parse(localStorage.getItem("cities"));
+  }
 
-    //if nothing in local Storage, create a new object to track all cities arrays
+//if nothing in local Storage, create a new object to track all cities arrays
 
 if (!cities)  {
     cities = [];
 };
+
+
+// Need help below this...
+var saveCities = function() { //stores to local storage (setItem, getItem)
+   console.log('executed save cities')
+   localStorage.setItem("cities", JSON.stringify(cities));
+};
+
+function getSearchVal() {
+        var searchValue = document.querySelector("#search-value").value;
+    searchcities(city);
+    makelist(city);
 }
+      
 
+function makeRow(searchValue) {
+        var liEl = document.createElement("ul")
+        ulEl.classList.add("list-group");
+        var text = city;
+        ulEl.textContent = text;
+        var previousEl = document.querySelector('.previous');
+        previousEl.onclick = function(){
+          if (event.target.tagName == "UL"){
+          searchcities(event.target.textContent)
+          }
+        }
+        previousEl.appendChild(ulEl);
+};    
 
-// var loadCities = function() {
-//  cities = JSON.parse(localStorage.getItem("cities"));
-//}
-
-//var saveCities = function() { //stores to local storage (setItem, getItem)
-//    console.log('executed save cities')
-//    localStorage.setItem("cities", JSON.stringify(cities));
-//};
-
-
+//.. and above this
 
 btn.addEventListener('click', function() { 
     console.log(searchV.value)
     searchcities(searchV.value)
+
 }) //end of addEventListener button */
+
 
 function searchcities(city){
        let queryurl = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=8b58730b831d9dfe90f82c5fd73e1a99"
@@ -64,7 +84,7 @@ function searchcities(city){
        //console.log(response.weather.main)
 
        //Get current temperature
-       temp.innerHTML = "Temperature is " + response.main.temp + " C" // Need to convert to F
+       temp.innerHTML = "Temperature is " + response.main.temp + " C" 
        console.log(response.main.temp)
      
        //Humidity
@@ -76,31 +96,11 @@ function searchcities(city){
        wind.innerHTML = "Wind speed is " + response.wind.speed + " MPH"
        console.log(response.wind.speed)
      
-    // Nested API fetch. This was replaced with the separate, UV, function
+        // UV variable
+            uvfunct(response.coord.lat, response.coord.lon)
 
-    // return fetch (
-    //  'https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&appid=8b58730b831d9dfe90f82c5fd73e1a99'
-    //  )
-    //   console.log('in the return fetch')   
-    //}
-    //   .then(function(response) {
-    //       console.log('in the return fetch then response')
-    //       return response.json();
-    //       uv.innerHTML = "UV index is " + response.daily.uvi
-    //   })
-    //   .then(function(response) {
-    //    uv.innerHTML = "UV index is " + response.daily.uvi
-    //   })))   
-     //  }
-
-
-   // UV variable
-    uvfunct(response.coord.lat, response.coord.lon)
-
-    //weather icon; need icon id
-    iconfunct(icon)
-
-
+        //weather icon; need icon id
+        // iconfunct(icon)
 //       })
 //    } 
 }) //end of searchcities function
@@ -131,8 +131,9 @@ var iconfunct = function(icon) {
      }).then(function(ending) {
          //weather icon
          console.log(ending.weather.icon)
-         $(".icon").html("<img src=' + .icon + '>")
-         desc.innerHTML = ending.weather.icon;
+         $(".icon").html("<img src=' + .icon + '>") //Doesn't print an image
+         desc.innerHTML = ending.weather.icon;      //Doesn't print
      })
      }
-// } //this seems to be needed based on uvfunction ?!
+// } //this seems to be needed based on uvfunction, but runs without it ?!
+
