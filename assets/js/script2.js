@@ -15,6 +15,7 @@ day = moment().format('L');
 
 
 // Store cities
+
 function storecity(city){
 myCityArray.push(city)
 console.log("city passed " + city)
@@ -24,10 +25,17 @@ for(i=0;i<myCityArray.length;i++){
    var parentList = document.querySelector(".list-group")
   var myLi = document.createElement("li")
    myLi.textContent = currentcity
-   
 }
 parentList.append(myLi)
-console.log("Line 39 :- "+ currentcity);
+console.log("Line 30 :- "+ currentcity);
+console.log("mycityarray is" + myCityArray)
+return myCityArray
+}
+
+function buttonclick(city){
+    console.log("myCityarray in buttonclick is " + myCityArray)
+    newvaluetosearch = document.getElementById("onclick-event");
+    searchcities(newvaluetosearch) 
 }
 
 
@@ -35,8 +43,7 @@ btn.addEventListener('click', function() {
     console.log(searchV.value)
     searchcities(searchV.value)
     storecity(searchV.value)
-
-
+    buttonclick(searchV.value)
 }) //end of addEventListener button */
 
 
