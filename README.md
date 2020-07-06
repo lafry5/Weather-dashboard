@@ -29,7 +29,7 @@ THEN I am again presented with current and future conditions for that city
 
 Sample screenshot from the weather dashboard challenge:
 
-![screenshot](screenshot1.jpg)
+![screenshot](./assets/images/screenshot1.jpg)
 
 
 REPOSITORY TITLE: lafry5/Weather-dashboard
@@ -67,9 +67,9 @@ Description:
 
 Example screenshots are as follows:
 
-![screenshot](screenshot2.jpg)
+![screenshot](./assets/images/screenshot2.jpg)
 
-![screenshot](screenshot3.jpg)
+![screenshot](./assets/images/screenshot3.jpg)
 
 
 Support:
