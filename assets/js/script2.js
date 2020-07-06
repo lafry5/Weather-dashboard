@@ -12,19 +12,7 @@ var myCityArray = [];
 
 day = moment().format('L');
 
-//if (!myCityArray)  {
-//   myCityArray = [];
-//};
 
-// Confirm document ready state
-// When the page is ready, run our for loop.
-//document.onreadystatechange = function () {
-//    if(document.readyState === "complete"){
-//      initApplication();
-//    }
-//}
-
-//searchcities()
 
 // Store cities
 function storecity(city){
@@ -84,18 +72,7 @@ function searchcities(city){
        var humidity5 = document.getElementById('humidity5')
        var temp5 = document.getElementById('temp5')
        
-    //     Move this above after document ready
-    //    myCityArray.push(city)
-    //   for(i=0;i<myCityArray.length;i++){
-    //    var currentcity = myCityArray[i];
-    //    localStorage.setItem('citykey',myCityArray)
-    //    var parentList = document.querySelector(".list-group")
-    //    var myLi = document.createElement("li")
-    //     myLi.textContent = currentcity
-    //     parentList.append(myLi)
-    //   }
-    //   Move this above after document ready
-       
+        
        fetch(queryurl).then(function(response){
        return response.json()
        }).then(function(response){
@@ -193,9 +170,7 @@ var uvfunct = function(lat,lon) {
         day3.innerHTML = daythree;
         day4.innerHTML = dayfour;
         day5.innerHTML = dayfive;
-        
-
-
+   
     })
    }
 
