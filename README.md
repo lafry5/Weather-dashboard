@@ -34,7 +34,7 @@ Sample screenshot from the weather dashboard challenge:
 
 REPOSITORY TITLE: lafry5/Weather-dashboard
 
-    Created code from scratch. Created README.md, index2.html, script2.js, style.css and screenshot.jpg files.
+    Created code from scratch. Created README.md, index.html, script2.js, style.css and screenshot.jpg files.
 
 Repository Link: https://github.com/lafry5/Weather-dashboard
 
@@ -56,7 +56,7 @@ Clone:
     Clone this repo to your local machine using https://github.com/lafry5/Weather-dashboard.git
 
 Setup:
-    Ensure that all files are located in the root folder (Index2, Readme).
+    Ensure that all files are located in the root folder (Index, Readme).
 
 Contributing:
     Assistance was provided from the TAs during office hours for questions on the assignment.
