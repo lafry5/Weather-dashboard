@@ -25,19 +25,13 @@ for(i=0;i<myCityArray.length;i++){
    var parentList = document.querySelector(".list-group")
   var myLi = document.createElement("li")
    myLi.textContent = currentcity
+   myLi.addEventListener('click', function() {searchcities(this.textContent)})
 }
 parentList.append(myLi)
 console.log("Line 30 :- "+ currentcity);
 console.log("mycityarray is" + myCityArray)
 return myCityArray
 }
-
-function buttonclick(city){
-    console.log("myCityarray in buttonclick is " + myCityArray)
-    newvaluetosearch = document.getElementById("onclick-event");
-    searchcities(newvaluetosearch) 
-}
-
 
 btn.addEventListener('click', function() { 
     console.log(searchV.value)
@@ -50,8 +44,7 @@ btn.addEventListener('click', function() {
 function searchcities(city){
        let queryurl = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=8b58730b831d9dfe90f82c5fd73e1a99&units=imperial"
        var CityInfo = [];
-       day = moment().format('L');
-       var name = document.getElementById('name') //temp test
+       var name = document.getElementById('name') 
        var humidity = document.getElementById('humidity')
        var temp = document.getElementById('temp')
        var wind = document.getElementById('wind')
@@ -86,16 +79,18 @@ function searchcities(city){
        console.log(response) 
        
        //Get current city, date and description
-       name.innerHTML = response.name 
+      // if(response.name){
+          name.innerHTML = response.name 
+      // } else {
+      //     console.log(response)
+      // } 
+       
        // need to add name to the cities list 
        console.log(response.name)
        day.innerHTML = moment().format('L');
        weather = response.weather[0].icon
        desc.src = "http://openweathermap.org/img/w/" + weather + ".png";
      
-       // desc.innerHTML = response.weather.main
-       //console.log(response.weather.main)
-
        //Get current temperature
        temp.innerHTML = "Temperature is " + response.main.temp + " F" 
        console.log(response.main.temp)
