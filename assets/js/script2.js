@@ -7,22 +7,47 @@ var temp = document.querySelector('#temp')
 var uv = document.querySelector('#uv')
 var desc = document.querySelector('#desc')
 var day = document.querySelector('#day')
-var myCityArray = [];
 
-var cities = {}
+var myCityArray = [];
 
 day = moment().format('L');
 
+//if (!myCityArray)  {
+//   myCityArray = [];
+//};
 
+// Confirm document ready state
+// When the page is ready, run our for loop.
+//document.onreadystatechange = function () {
+//    if(document.readyState === "complete"){
+//      initApplication();
+//    }
+//}
 
-if (!cities)  {
-   cities = [];
-};
+//searchcities()
+
+// Store cities
+function storecity(city){
+myCityArray.push(city)
+console.log("city passed " + city)
+for(i=0;i<myCityArray.length;i++){
+   var currentcity = myCityArray[i];
+   localStorage.setItem('citykey',myCityArray)
+   var parentList = document.querySelector(".list-group")
+  var myLi = document.createElement("li")
+   myLi.textContent = currentcity
+   
+}
+parentList.append(myLi)
+console.log("Line 39 :- "+ currentcity);
+}
 
 
 btn.addEventListener('click', function() { 
     console.log(searchV.value)
     searchcities(searchV.value)
+    storecity(searchV.value)
+
 
 }) //end of addEventListener button */
 
@@ -59,24 +84,17 @@ function searchcities(city){
        var humidity5 = document.getElementById('humidity5')
        var temp5 = document.getElementById('temp5')
        
-       // This should be made as a separate function
-      //if (myCityArray != 0) {
-          myCityArray.push(city)   //Do this after every load, every fetch,
-      //} else 
-      // {
-      //  myCityArray = city;
-       // }
-
-       //parentList.innerHTML = "";
-       for(i=0;i<myCityArray.length;i++){
-          var currentcity = myCityArray[i];
-          localStorage.setItem('citykey',myCityArray)
-          var parentList = document.querySelector(".list-group")
-          var myLi = document.createElement("li")
-          myLi.textContent = currentcity
-          parentList.append(myLi)
-      }
-      // This should be separated out as a separate function
+    //     Move this above after document ready
+    //    myCityArray.push(city)
+    //   for(i=0;i<myCityArray.length;i++){
+    //    var currentcity = myCityArray[i];
+    //    localStorage.setItem('citykey',myCityArray)
+    //    var parentList = document.querySelector(".list-group")
+    //    var myLi = document.createElement("li")
+    //     myLi.textContent = currentcity
+    //     parentList.append(myLi)
+    //   }
+    //   Move this above after document ready
        
        fetch(queryurl).then(function(response){
        return response.json()
@@ -115,10 +133,11 @@ function searchcities(city){
        })  .catch(function(err) {
             console.log('error')
      })
-    }
+    //  storecity(city)
+     }
 //} //end of searchcities function
 
-
+//storecity(searchV.value)
 
 // UV function & 5-day forecast using One Call API
 var uvfunct = function(lat,lon) {
