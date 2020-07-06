@@ -13,46 +13,12 @@ var cities = {}
 
 day = moment().format('L');
 
-var loadCities = function() {
-    cities = JSON.parse(localStorage.getItem("cities"));
-}
+
 
 if (!cities)  {
    cities = [];
 };
 
-//if nothing in local Storage, create a new object to track all cities arrays
-
-// Need help below this...
-//var saveCities = function() { //stores to local storage 
-//   console.log('executed save cities')
-//   localStorage.setItem("cities", JSON.stringify(cities));
-//};
-
-
-
-//function getSearchVal() {
-//        var searchValue = document.querySelector("#search-value").value;
-//    searchcities(city);
-//    makelist(city);
-//}
-      
-
-//function makeRow(searchValue) {
- //       var liEl = document.createElement("ul")
- //       ulEl.classList.add("list-group");
-//        var text = city;
- //       ulEl.textContent = text;
-//        var previousEl = document.querySelector('.previous');
- //       previousEl.onclick = function(){
- //         if (event.target.tagName == "UL"){
-//          searchcities(event.target.textContent)
-//          }
-//        }
- //       previousEl.appendChild(ulEl);
-//};    
-
-//.. and above this
 
 btn.addEventListener('click', function() { 
     console.log(searchV.value)
