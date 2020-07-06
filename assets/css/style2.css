@@ -32,8 +32,13 @@
 
 }
 
-ul.list-group {
+.list-group {
     min-height: 130px;
+    text-decoration: none
+    border-top: solid, grey;
+    border-bottom: solid, grey;
+    border-left: solid, grey;
+    border-right: solid, grey;
   }
 
 .card {
@@ -49,3 +54,15 @@ ul.list-group {
 
 }
 
+/* Colors for UV Index */
+.low {
+    background-color: yellow;
+}
+
+.medium {
+    background-color: orange;
+}
+
+.high {
+    background-color: red;
+}
