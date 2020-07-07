@@ -40,9 +40,9 @@ btn.addEventListener('click', function() {
     buttonclick(searchV.value)
 }) //end of addEventListener button */
 
-
+//append this to query url  8b58730b831d9dfe90f82c5fd73e1a99&units=imperial
 function searchcities(city){
-       let queryurl = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=8b58730b831d9dfe90f82c5fd73e1a99&units=imperial"
+       let queryurl = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="
        var CityInfo = [];
        var name = document.getElementById('name') 
        var humidity = document.getElementById('humidity')
