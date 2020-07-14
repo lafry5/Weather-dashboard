@@ -7,6 +7,8 @@ var temp = document.querySelector('#temp')
 var uv = document.querySelector('#uv')
 var desc = document.querySelector('#desc')
 var day = document.querySelector('#day')
+var today = document.querySelector('#today')
+var forecast = document.querySelector('#forecast')
 
 var myCityArray = [];
 
@@ -42,7 +44,7 @@ btn.addEventListener('click', function() {
 
 //append this to query url  8b58730b831d9dfe90f82c5fd73e1a99&units=imperial
 function searchcities(city){
-       let queryurl = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="
+       let queryurl = "https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid=8b58730b831d9dfe90f82c5fd73e1a99&units=imperial"
        var CityInfo = [];
        var name = document.getElementById('name') 
        var humidity = document.getElementById('humidity')
@@ -72,9 +74,15 @@ function searchcities(city){
        var humidity5 = document.getElementById('humidity5')
        var temp5 = document.getElementById('temp5')
        
-        
+       var todayEl = document.getElementById('today')
+       var forecastEl = document.getElementById('forecast')
+
+       todayEl.removeAttribute("class");
+       forecastEl.removeAttribute("class");
+      
        fetch(queryurl).then(function(response){
        return response.json()
+       
        }).then(function(response){
        console.log(response) 
        

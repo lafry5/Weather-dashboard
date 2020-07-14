@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+.hide {
+    display: none;
+}
+
 #today {
     background-color: lightgray;
     border: solid, black;

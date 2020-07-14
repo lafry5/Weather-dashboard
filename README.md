@@ -1,33 +1,44 @@
-# Weather-dashboard
+# Unit 7: Project 1
 
-Create a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS. Use the OpenWeather API to retrieve weather data for cities and local storage to store any persistent data.
+## Overview
+Welcome to Project 1! This is an important step in your full-stack journey as you will now use your newly acquired skills and knowledge to build web application from scratch. With your team, you will conceive and execute a design that solves a real-world problem by integrating data received from multiple server-side API requests. Because you will be working collaboratively, you will learn agile development methodologies and implement feature and bug fixes using the git branch workflow and pull requests.
 
-## User Story
+## Key Topics
+* Server-side APIs
+* Git branching workflow
+* Agile software development
+
+## Comprehension Check
+You will be employer-ready if you can answer the following questions:
+1. What is agile software development?
+2. What is an MVP?
+3. If you pull down a teammate's branch and you have merge conflicts, how do you handle it?
+
+## Learning Objectives
+You will be employer-competitive if you are able to:
+* Speak technically about a feature you implemented in your project
+* Explain and execute git branching workflow in a collaborative project
+* Resolve merge conflicts
+* Explain agile software development
+* Design, build, and deploy a client-side web application using GitHub Pages
+* Prepare a professional presentation and repository README for your project
+
+## Project Requirements
 
 ```
-AS A traveler
-I WANT to see the weather outlook for multiple cities
-SO THAT I can plan a trip accordingly
+* Use a CSS framework other than Bootstrap.
+* Be deployed to GitHub Pages.
+* Be interactive (i.e: accept and respond to user input).
+* Use at least two server-side APIs.
+* Does not use alerts, confirms, or prompts (use modals).
+* Use client-side storage to store persistent data.
+* Be responsive.
+* Have a polished UI.
+* Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/* id-naming conventions, indentation, quality comments, etc.).
+* Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
-```
 
-## Acceptance Criteria
-
-```
-GIVEN a weather dashboard with form inputs
-WHEN I search for a city
-THEN I am presented with current and future conditions for that city and that city is added to the search history
-WHEN I view current weather conditions for that city
-THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-WHEN I view the UV index
-THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-WHEN I view future weather conditions for that city
-THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-WHEN I click on a city in the search history
-THEN I am again presented with current and future conditions for that city
-```
-
-Sample screenshot from the weather dashboard challenge:
+Sample screenshot from the XpensiFI Budget Tracker:
 
 ![screenshot](./assets/images/screenshot1.jpg)
 
