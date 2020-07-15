@@ -10,6 +10,7 @@ var day = document.querySelector('#day')
 var today = document.querySelector('#today')
 var forecast = document.querySelector('#forecast')
 
+
 var myCityArray = [];
 
 day = moment().format('L');
